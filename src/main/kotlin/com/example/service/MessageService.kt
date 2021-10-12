@@ -5,9 +5,7 @@ import com.example.model.Message
 
 class MessageService {
 
-    private var messageData
-        get() = MessageData.messageData
-        set(value) { MessageData.messageData = value }
+    private var messageData = MessageData.messageData
 
 
     fun readMessages(limit: Int? = null): List<Message> =
