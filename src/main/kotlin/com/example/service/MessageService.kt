@@ -10,5 +10,12 @@ class MessageService {
         else MessageData.messageData
 
     fun createMessage(userName: String, text: String) =
-        MessageData.messageData.add(Message(userName, text))
+        MessageData.messageData
+            .add(Message(userName, text))
+
+    fun updateMessage(id: String, userName: String, text: String){
+        MessageData.messageData = MessageData.messageData
+            .map { if(it.id == id) Message(userName, text) else it }
+            .toMutableList()
+    }
 }

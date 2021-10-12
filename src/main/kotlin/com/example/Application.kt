@@ -42,5 +42,21 @@ fun Application.module(){
 
             call.respond(HttpStatusCode.OK)
         }
+
+        put("/") {
+            val parameters = call.receiveParameters()
+
+            val id = parameters["id"] ?: ""
+            val userName = parameters["user_name"] ?: ""
+            val text = parameters["text"] ?: ""
+
+            println("id: $id")
+            println("userName: $userName")
+            println("text: $text")
+
+            messageService.updateMessage(id, userName, text)
+
+            call.respond(HttpStatusCode.OK)
+        }
     }
 }
