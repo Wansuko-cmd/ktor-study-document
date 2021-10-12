@@ -12,7 +12,10 @@ fun Application.module(){
 
     routing {
         get("/"){
-            call.respond(HttpStatusCode.OK, "Hello World")
+
+            val query = call.request.queryParameters["query"]
+
+            call.respond(HttpStatusCode.OK, query ?: "Hello World")
         }
 
         get("/{id}"){
