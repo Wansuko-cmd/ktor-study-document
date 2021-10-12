@@ -14,5 +14,11 @@ fun Application.module(){
         get("/"){
             call.respond(HttpStatusCode.OK, "Hello World")
         }
+
+        get("/{id}"){
+            val id = call.parameters["id"] ?: "null"
+
+            call.respond(HttpStatusCode.OK, id)
+        }
     }
 }
