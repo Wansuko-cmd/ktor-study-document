@@ -58,5 +58,17 @@ fun Application.module(){
 
             call.respond(HttpStatusCode.OK)
         }
+
+        delete("/{id}") {
+            val id = call.parameters["id"]
+
+            if (id != null) {
+                messageService.deleteMessage(id)
+                call.respond(HttpStatusCode.OK)
+            }
+            else{
+                call.respond(HttpStatusCode.BadRequest)
+            }
+        }
     }
 }
