@@ -19,6 +19,14 @@ fun Application.module(){
         json(Json)
     }
 
+    install(CORS){
+        method(HttpMethod.Get)
+        method(HttpMethod.Post)
+        method(HttpMethod.Put)
+        method(HttpMethod.Delete)
+        anyHost()
+    }
+
     val messageService = MessageService()
 
     routing {
